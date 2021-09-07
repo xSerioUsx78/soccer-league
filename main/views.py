@@ -152,7 +152,6 @@ class GenerateRandomMatches(View):
 
     def get(self, *args, **kwargs):
         self.generate_matches()
-        # self.generate_away_matches()
         return redirect('/')
 
 

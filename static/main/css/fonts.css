@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'vazir';
+    src: url('../../fonts/Vazir-FD-WOL.ttf');
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'iranyekan';
+    src: url("../../fonts/iranyekanwebregular.eot");
+    src: url('../../fonts/iranyekanwebregular.woff');
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'iransans-medium';
+    src: url('../../fonts/WebFonts/IRANSans-Medium-web.eot');
+    src: url('../../fonts/WebFonts/IRANSans-Medium-web.woff');
+    font-style: normal;
+    font-display: block;
+}
+  
+@font-face {
+    font-family: 'iransans-bold';
+    src: url("../../fonts/WebFonts/IRANSans-Bold-web.eot");
+    src: url("../../fonts/WebFonts/IRANSans-Bold-web.woff");
+    font-style: normal;
+    font-display: block;
+}
+
+body {
+    font-family: "iranyekan", sans-serif;
+}
+
+.fa-number, .fa-price {
+    font-family: 'vazir';
+}

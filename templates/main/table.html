@@ -1,0 +1,48 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="inner">
+            <div class="table-responsive">
+                <table class="table bg-white rounded shadow p-4">
+                    <thead>
+                        <tr class="text-center">
+                        <th scope="col">رتبه</th>
+                        <th scope="col">نام تیم</th>
+                        <th scope="col">تعداد برد</th>
+                        <th scope="col">تعداد باخت</th>
+                        <th scope="col">گل زده</th>
+                        <th scope="col">گل خورده</th>
+                        <th scope="col">میانگین گل ها</th>
+                        <th scope="col">امتیاز</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for team in teams %}
+                            <tr class="text-center
+                            {% if forloop.counter == 1 %}
+                            table-success
+                            {% elif forloop.counter == 2 %} 
+                            table-primary
+                            {% elif forloop.counter == 3 %}
+                            table-danger
+                            {% endif %}
+                            ">
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ team.name }}</td>
+                                <td>{{ team.win }}</td>
+                                <td>{{ team.lose }}</td>
+                                <td>{{ team.goals }}</td>
+                                <td>{{ team.flowered }}</td>
+                                <td>{{ team.average }}</td>
+                                <td>{{ team.point }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

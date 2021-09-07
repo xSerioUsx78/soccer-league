@@ -1,0 +1,41 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="inner">
+            <div class="rounded shadow bg-white border p-4 scroll">
+                <div>
+                    {% for week in weeks %}
+                        {% if week.get_results %}
+                            <div class="result mb-4">
+                                <div class="header">
+                                    <h5 class="text-info fw-bold">
+                                        {{ week.name }}
+                                    </h5>
+                                </div>
+                                <hr>
+                                {% for match in week.get_results %}
+                                    <div class="teams mb-3 mt-3">
+                                        <div class="team1">
+                                            <span>{{ match.team1 }}</span>
+                                        </div>
+                                        <div class="mid">
+                                            <span class="{% if match.team1_won %}text-success{% else %}text-danger{% endif %} fw-bold">{{ match.team1_score }}</span>
+                                            <span class="text-secondary">-</span>
+                                            <span class="{% if match.team1_won %}text-danger{% else %}text-success{% endif %} fw-bold">{{ match.team2_score }}</span>
+                                        </div>
+                                        <div class="team2">
+                                            <span>{{ match.team2 }}</span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

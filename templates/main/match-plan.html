@@ -1,0 +1,39 @@
+{% extends '../base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="inner">
+            <div class="rounded shadow bg-white border p-4 scroll">
+                <div>
+                    {% for week in weeks %}
+                        {% if week.get_matches %}
+                            <div class="result mb-4">
+                                <div class="header">
+                                    <h5 class="text-info fw-bold">
+                                        {{ week.name }}
+                                    </h5>
+                                </div>
+                                <hr>
+                                {% for team in week.get_matches %}
+                                    <div class="teams mb-3">
+                                        <div class="team1">
+                                            <span>{{ team.team1 }}</span>
+                                        </div>
+                                        <div class="mid">
+                                            <span class="me-4 ms-4">vs</span>
+                                        </div>
+                                        <div class="team2">
+                                            <span>{{ team.team2 }}</span>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

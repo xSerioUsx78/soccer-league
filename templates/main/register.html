@@ -8,14 +8,13 @@
                 <form method="POST">
                     {% csrf_token %}
                     <div class="mb-4">
-                        <label for="name" class="form-label">نام تیم</label>
+                        <label for="name" class="form-label">Team name</label>
                         {{ form.name }}
-                        <div id="emailHelp" class="form-text">حروف فارسی و لاتین قابل قبول میباشند.</div>
                         <div class="text-danger err mt-2">
                             {{ form.name.errors }}
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-info">نام نویسی</button>
+                    <button type="submit" class="btn btn-info">Submit</button>
                 </form>
             </div>
         </div>

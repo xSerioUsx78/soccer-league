@@ -1,7 +1,6 @@
 from django.urls import path
 from .views import (
-    IndexView, TableView, RegisterView, MachPlan, MachResult,
-    GenerateRandomMatches, GenerateAwayMatches
+    IndexView, TableView, RegisterView, MachPlan, MachResult
 )
 
 
@@ -13,7 +12,5 @@ urlpatterns = [
     path('table/', TableView.as_view(), name="table"),
     path('register/', RegisterView.as_view(), name="register"),
     path('match-plan/', MachPlan.as_view(), name="match-plan"),
-    path('match-result/', MachResult.as_view(), name="match-result"),
-    path('gen/', GenerateRandomMatches.as_view(), name="gen"),
-    path('gen/away/', GenerateAwayMatches.as_view(), name="gen-away")
+    path('match-result/', MachResult.as_view(), name="match-result")
 ]

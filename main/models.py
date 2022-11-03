@@ -1,7 +1,6 @@
+from email.policy import default
 from django.db import models
 from model_utils import FieldTracker
-
-# Create your models here.
 
 
 class Tour(models.Model):
@@ -16,12 +15,13 @@ class Tour(models.Model):
 class Team(models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='teams')
     name = models.CharField(max_length=30, unique=True, verbose_name='نام')
-    win = models.PositiveBigIntegerField(default=0)
+    win = models.PositiveIntegerField(default=0)
     lose = models.PositiveIntegerField(default=0)
+    drawn = models.PositiveIntegerField(default=0)
     goals = models.PositiveIntegerField(default=0)
     flowered = models.PositiveIntegerField(default=0)
     average = models.IntegerField(default=0)
-    point = models.PositiveIntegerField(default=0)
+    point = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name

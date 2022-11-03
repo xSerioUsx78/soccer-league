@@ -4,18 +4,19 @@
 
     <div class="container">
         <div class="inner">
-            <div class="table-responsive">
-                <table class="table bg-white rounded shadow p-4">
+            <div class="table-responsive py-4">
+                <table class="table bg-white rounded shadow mb-0">
                     <thead>
                         <tr class="text-center">
-                        <th scope="col">رتبه</th>
-                        <th scope="col">نام تیم</th>
-                        <th scope="col">تعداد برد</th>
-                        <th scope="col">تعداد باخت</th>
-                        <th scope="col">گل زده</th>
-                        <th scope="col">گل خورده</th>
-                        <th scope="col">میانگین گل ها</th>
-                        <th scope="col">امتیاز</th>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Club</th>
+                        <th scope="col">W</th>
+                        <th scope="col">D</th>
+                        <th scope="col">L</th>
+                        <th scope="col">GF</th>
+                        <th scope="col">GA</th>
+                        <th scope="col">GD</th>
+                        <th scope="col">Pts</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,6 +33,7 @@
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ team.name }}</td>
                                 <td>{{ team.win }}</td>
+                                <td>{{ team.drawn }}</td>
                                 <td>{{ team.lose }}</td>
                                 <td>{{ team.goals }}</td>
                                 <td>{{ team.flowered }}</td>

@@ -21,15 +21,15 @@ def schedule_matches(teams: Union[QuerySet, List, Set, Tuple]) -> List:
 
     for i in range(teams_len - 1):
         mid = int(teams_len / 2)
-        group1 = teams[:mid]
-        group2 = teams[mid:]
-        group2.reverse()
+        list1 = teams[:mid]
+        list2 = teams[mid:]
+        list2.reverse()
 
         # Switch the side for each week
         if i % 2 == 1:
-            schedule.append(zip(group1, group2))
+            schedule.append(zip(list1, list2))
         else:
-            schedule.append(zip(group2, group1))
+            schedule.append(zip(list2, list1))
 
         teams.insert(1, teams.pop())
 

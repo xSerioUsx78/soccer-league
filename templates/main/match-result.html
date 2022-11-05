@@ -21,9 +21,30 @@
                                             <span>{{ match.team1 }}</span>
                                         </div>
                                         <div class="mid">
-                                            <span class="{% if match.team1_won %}text-success{% else %}text-danger{% endif %} fw-bold">{{ match.team1_score }}</span>
-                                            <span class="text-secondary">-</span>
-                                            <span class="{% if match.team1_won %}text-danger{% else %}text-success{% endif %} fw-bold">{{ match.team2_score }}</span>
+                                            <span 
+                                                class="
+                                                {% if match.team1_won %}
+                                                text-success
+                                                {% elif match.is_draw %}
+                                                text-secondary
+                                                {% else %}
+                                                text-danger
+                                                {% endif %} 
+                                                fw-bold">
+                                                {{ match.team1_score }}
+                                            </span>
+                                            <span 
+                                                class="text-secondary">-</span>
+                                            <span 
+                                                class="
+                                                {% if match.team1_won or match.is_draw %}
+                                                text-secondary
+                                                {% else %}
+                                                text-success
+                                                {% endif %} 
+                                                fw-bold">
+                                                {{ match.team2_score }}
+                                            </span>
                                         </div>
                                         <div class="team2">
                                             <span>{{ match.team2 }}</span>

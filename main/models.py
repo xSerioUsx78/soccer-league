@@ -50,16 +50,40 @@ class Week(models.Model):
 
 
 class Match(models.Model):
-    week = models.ForeignKey(Week, on_delete=models.CASCADE, blank=True, null=True, related_name='matches')
+    week = models.ForeignKey(
+        Week, 
+        on_delete=models.CASCADE, 
+        blank=True, 
+        null=True, 
+        related_name='matches'
+    )
     team1 = models.ForeignKey(
-        Team, on_delete=models.CASCADE, related_name='team1')
+        Team, 
+        on_delete=models.CASCADE, 
+        related_name='team1'
+    )
     team2 = models.ForeignKey(
-        Team, on_delete=models.CASCADE, related_name='team2')
-    team1_score = models.PositiveBigIntegerField(blank=True, null=True)
-    team2_score = models.PositiveIntegerField(blank=True, null=True)
-    is_went = models.BooleanField(default=False)
-    is_return = models.BooleanField(default=False)
-    is_finished = models.BooleanField(default=False)
+        Team, 
+        on_delete=models.CASCADE, 
+        related_name='team2'
+    )
+    team1_score = models.PositiveBigIntegerField(
+        blank=True, 
+        null=True
+    )
+    team2_score = models.PositiveIntegerField(
+        blank=True, 
+        null=True
+    )
+    is_went = models.BooleanField(
+        default=False
+    )
+    is_return = models.BooleanField(
+        default=False
+    )
+    is_finished = models.BooleanField(
+        default=False
+    )
     tracker = FieldTracker()
 
     def __str__(self):
@@ -69,4 +93,7 @@ class Match(models.Model):
         ordering = ('week__level', 'id')
 
     def team1_won(self):
-        return True if self.team1_score > self.team2_score else False
+        return self.team1_score > self.team2_score
+    
+    def is_draw(self):
+        return self.team1_score == self.team2_score

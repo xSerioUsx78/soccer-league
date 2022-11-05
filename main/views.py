@@ -16,7 +16,9 @@ class IndexView(View):
 class TableView(View):
 
     def get(self, *args, **kwargs):
-        teams = Team.objects.order_by('-point', '-average', '-goals', '-win', 'flowered')
+        teams = Team.objects.order_by(
+            '-point', '-average', '-goals', '-win', 'flowered'
+        )
         ctx = {
             'title': 'جدول مسابقات',
             'teams': teams

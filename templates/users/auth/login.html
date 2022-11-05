@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+     <!-- Page Header-->
+    <div class='auth-wrapper pb-5'>
+        <div class="container"> 
+            <div class="bg-white border rounded shadow p-4">
+                <div class="errors mb-4">
+                    {{ form.non_field_errors }}
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-floating mb-2">
+                        {{ form.username }}
+                        <label for="id_username">Username</label>
+                    </div>
+                    <div class="form-floating">
+                        {{ form.password }}
+                        <label for="id_password">Password</label>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary mt-4 mb-4 w-sm-100">
+                            Login
+                        </button>
+                    </div>
+                    <div>
+                        <small>
+                            Don't have any account yet ?
+                            <a href="{% url 'register' %}">
+                                Register
+                            </a>
+                        </small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

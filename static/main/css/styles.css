@@ -7,6 +7,10 @@ body {
   color: #444444;
 }
 
+ul {
+  padding-left: 0;
+}
+
 ::before,
 ::after {
   box-sizing: border-box;
@@ -14,10 +18,8 @@ body {
 
 #main {
   min-height: 100vh;
-  background-image: linear-gradient(
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.4)
-  ), url('/static/main/img/bg2.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/static/main/img/bg2.jpg");
   background-repeat: no-repeat, repeat;
   height: 100%;
   background-size: cover;
@@ -40,17 +42,17 @@ body {
   color: rgb(255, 255, 255);
   text-decoration: none;
   position: relative;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 #main .inner ul li a:before {
-  content: '';
+  content: "";
   height: 4px;
   width: 0;
   background-color: var(--bs-info);
   position: absolute;
   bottom: -5px;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 #main .inner ul li a:hover:before {
@@ -97,7 +99,7 @@ body {
   transform: translateX(50%);
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
   #main .inner ul li a {
     font-size: 30px;
   }
@@ -108,4 +110,9 @@ body {
     min-width: auto;
     width: 100%;
   }
+}
+
+.errors ul li {
+  list-style: none;
+  color: var(--bs-danger);
 }

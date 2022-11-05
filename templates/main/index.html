@@ -6,11 +6,15 @@
         <div class="inner">
             <ul class="w-100 text-center m-0 p-0 text-center">
                 {% if request.user.is_authenticated %}
-                    <li class="mb-4"><a href="{% url 'main:register' %}">Register in the tour</a></li>
+                    <li class="mb-4"><a href="{% url 'main:register' %}">Register your team</a></li>
+                    <li class="mb-4"><a href="{% url 'main:match-plan' %}">Matches plan</a></li>
+                    <li class="mb-4"><a href="{% url 'main:match-result' %}">Matches result</a></li>
+                    <li class="mb-4"><a href="{% url 'main:table' %}">Table</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="mb-4"><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
                 {% endif %}
-                <li class="mb-4"><a href="{% url 'main:match-plan' %}">Matches plan</a></li>
-                <li class="mb-4"><a href="{% url 'main:match-result' %}">Matches result</a></li>
-                <li><a href="{% url 'main:table' %}">Table</a></li>
             </ul>
         </div>
     </div>

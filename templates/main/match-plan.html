@@ -30,6 +30,10 @@
                                 {% endfor %}
                             </div>
                         {% endif %}
+                    {% empty %}
+                        <div class="alert alert-info" role="alert">
+                            There is no match plan yet!
+                        </div>
                     {% endfor %}
                 </div>
             </div>

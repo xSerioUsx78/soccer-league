@@ -7,8 +7,8 @@
             <ul class="w-100 text-center m-0 p-0 text-center">
                 {% if request.user.is_authenticated %}
                     <li class="mb-4"><a href="{% url 'main:register' %}">Register your team</a></li>
-                    <li class="mb-4"><a href="{% url 'main:match-plan' %}">Matches plan</a></li>
-                    <li class="mb-4"><a href="{% url 'main:match-result' %}">Matches result</a></li>
+                    <li class="mb-4"><a href="{% url 'main:match-plan' %}">Match plan</a></li>
+                    <li class="mb-4"><a href="{% url 'main:match-result' %}">Match result</a></li>
                     <li class="mb-4"><a href="{% url 'main:table' %}">Table</a></li>
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}

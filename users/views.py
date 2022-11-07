@@ -1,14 +1,13 @@
-from urllib import request
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from django.views.generic import View
 from django.utils.translation import gettext_lazy as _
+from django.contrib import messages
 from .forms import (
     UserRegisterForm
 )
 from .decorators import unauthenticated_user
 
-# Create your views here.
 
 @method_decorator([unauthenticated_user], 'dispatch')
 class RegisterView(View):
@@ -27,6 +26,10 @@ class RegisterView(View):
         )
         if form.is_valid():
             form.save()
+            messages.success(
+                self.request,
+                'You were registered successfully!'
+            )
             return redirect('login')
             
         ctx = {

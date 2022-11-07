@@ -14,7 +14,7 @@ class Tour(models.Model):
 
 class Team(models.Model):
     tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='teams')
-    name = models.CharField(max_length=30, unique=True, verbose_name='نام')
+    name = models.CharField(max_length=30, unique=True)
     win = models.PositiveIntegerField(default=0)
     lose = models.PositiveIntegerField(default=0)
     drawn = models.PositiveIntegerField(default=0)
@@ -25,10 +25,6 @@ class Team(models.Model):
 
     def __str__(self):
         return self.name
-
-    class Meta:
-        verbose_name = 'تیم'
-        verbose_name_plural = 'تیم ها'
 
 
 class Week(models.Model):

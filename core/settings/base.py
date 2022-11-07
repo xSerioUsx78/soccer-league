@@ -33,7 +33,6 @@ INSTALLED_APPS = [
 
     # THIRD PARTY APPS
     'django_cleanup.apps.CleanupConfig',
-    'sweetify',
     'whitenoise',
 
     # MY APPS

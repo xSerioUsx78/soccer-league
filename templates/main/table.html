@@ -4,46 +4,52 @@
 
     <div class="container">
         <div class="inner">
-            <div class="table-responsive py-4">
-                <table class="table bg-white rounded shadow mb-0">
-                    <thead>
-                        <tr class="text-center">
-                        <th scope="col">Rank</th>
-                        <th scope="col">Club</th>
-                        <th scope="col">W</th>
-                        <th scope="col">D</th>
-                        <th scope="col">L</th>
-                        <th scope="col">GF</th>
-                        <th scope="col">GA</th>
-                        <th scope="col">GD</th>
-                        <th scope="col">Pts</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for team in teams %}
-                            <tr class="text-center
-                            {% if forloop.counter == 1 %}
-                            table-success
-                            {% elif forloop.counter == 2 %} 
-                            table-primary
-                            {% elif forloop.counter == 3 %}
-                            table-danger
-                            {% endif %}
-                            ">
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ team.name }}</td>
-                                <td>{{ team.win }}</td>
-                                <td>{{ team.drawn }}</td>
-                                <td>{{ team.lose }}</td>
-                                <td>{{ team.goals }}</td>
-                                <td>{{ team.flowered }}</td>
-                                <td>{{ team.average }}</td>
-                                <td>{{ team.point }}</td>
+            {% if teams %}
+                <div class="table-responsive py-4">
+                    <table class="table bg-white rounded shadow mb-0">
+                        <thead>
+                            <tr class="text-center">
+                            <th scope="col">Rank</th>
+                            <th scope="col">Club</th>
+                            <th scope="col">W</th>
+                            <th scope="col">D</th>
+                            <th scope="col">L</th>
+                            <th scope="col">GF</th>
+                            <th scope="col">GA</th>
+                            <th scope="col">GD</th>
+                            <th scope="col">Pts</th>
                             </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {% for team in teams %}
+                                <tr class="text-center
+                                {% if forloop.counter == 1 %}
+                                table-success
+                                {% elif forloop.counter == 2 %} 
+                                table-primary
+                                {% elif forloop.counter == 3 %}
+                                table-danger
+                                {% endif %}
+                                ">
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ team.name }}</td>
+                                    <td>{{ team.win }}</td>
+                                    <td>{{ team.drawn }}</td>
+                                    <td>{{ team.lose }}</td>
+                                    <td>{{ team.goals }}</td>
+                                    <td>{{ team.flowered }}</td>
+                                    <td>{{ team.average }}</td>
+                                    <td>{{ team.point }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    No team registered yet!
+                </div>
+            {% endif %}
         </div>
     </div>
 

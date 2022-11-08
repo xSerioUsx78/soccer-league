@@ -17,22 +17,7 @@ class IndexView(View):
 
 
 @method_decorator([login_required], 'dispatch')
-class TableView(View):
-
-    def get(self, *args, **kwargs):
-        tour = Tour.objects.filter(closed=False).first()
-        teams = Team.objects.filter(tour=tour).order_by(
-            '-point', '-average', '-goals', '-win', 'flowered'
-        )
-        ctx = {
-            'title': 'جدول مسابقات',
-            'teams': teams
-        }
-        return render(self.request, 'main/table.html', ctx)
-
-
-@method_decorator([login_required], 'dispatch')
-class RegisterView(View):
+class RegisterTeamView(View):
 
     def get(self, *args, **kwargs):
         form = TeamForm()
@@ -44,15 +29,29 @@ class RegisterView(View):
 
     def post(self, *args, **kwargs):
         tour = Tour.objects.filter(closed=False).first()
+        user = self.request.user
+
+        if Team.objects.filter(
+            tour=tour,
+            participant=user
+        ).exists():
+            messages.error(
+                self.request,
+                "Your team already registered!"
+            )
+            return redirect('/')
+
         if Team.objects.filter(tour=tour).count() >= consts.MAX_TEAM_OPACITY:
             messages.error(
                 self.request,
                 "Sory we cant register your team, The tour got max opacity, we hope that we can see you in the next one!"
             )
             return redirect('/')
+            
         form = TeamForm(self.request.POST)
         if form.is_valid():
             team = form.save(commit=False)
+            team.participant = self.request.user
             team.tour = tour
             team.save()
             messages.success(
@@ -66,6 +65,21 @@ class RegisterView(View):
             'tour': tour
         }
         return render(self.request, 'main/register.html', ctx)
+
+
+@method_decorator([login_required], 'dispatch')
+class TableView(View):
+
+    def get(self, *args, **kwargs):
+        tour = Tour.objects.filter(closed=False).first()
+        teams = Team.objects.filter(tour=tour).order_by(
+            '-point', '-average', '-goals', '-win', 'flowered'
+        )
+        ctx = {
+            'title': 'جدول مسابقات',
+            'teams': teams
+        }
+        return render(self.request, 'main/table.html', ctx)
 
 
 @method_decorator([login_required], 'dispatch')

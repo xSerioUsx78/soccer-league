@@ -1,6 +1,9 @@
-from email.policy import default
 from django.db import models
+from django.contrib.auth import get_user_model
 from model_utils import FieldTracker
+
+
+User = get_user_model()
 
 
 class Tour(models.Model):
@@ -13,8 +16,19 @@ class Tour(models.Model):
 
 
 class Team(models.Model):
-    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='teams')
-    name = models.CharField(max_length=30, unique=True)
+    participant = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE
+    )
+    tour = models.ForeignKey(
+        Tour, 
+        on_delete=models.CASCADE, 
+        related_name='teams'
+    )
+    name = models.CharField(
+        max_length=30, 
+        unique=True
+    )
     win = models.PositiveIntegerField(default=0)
     lose = models.PositiveIntegerField(default=0)
     drawn = models.PositiveIntegerField(default=0)
